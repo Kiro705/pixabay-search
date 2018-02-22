@@ -10,34 +10,31 @@ const  {height, width} = Dimensions.get('window')
 const styles = StyleSheet.create({
 	Container: {
 		flex: 1,
-		backgroundColor: 'black',
+		backgroundColor: 'green',
 		alignItems: 'center',
-  },
-  Image: {
-    flex: 1,
-    position: 'absolute',
     width: '100%',
     height: '100%',
     justifyContent: 'center',
   },
   Text: {
     fontSize: 32,
-    fontFamily: 'Courier New',
+    fontFamily: 'Arial',
     textAlign: 'center',
-    color: '#600000',
+    color: 'black',
   },
   FormContainer: {
+    width: '90%',
     borderWidth: 2,
-    borderColor: '#600000',
-    borderBottomColor: '#600000',
-    backgroundColor: '#191919',
-    borderRadius: 3,
+    borderColor: 'darkgreen',
+    borderBottomColor: 'darkgreen',
+    backgroundColor: 'lightgreen',
+    borderRadius: 5,
   },
   FormInput: {
     fontSize: 0.08 * width,
     margin: 5,
-    fontFamily: 'Courier New',
-    color: 'gray',
+    fontFamily: 'Arial',
+    color: 'black',
   },
   Buffer1: {
     flex: 1,
@@ -72,37 +69,34 @@ function HomeComponent(props){
       style={styles.Container}
       behavior="padding"
       >
-      <StatusBar barStyle="light-content" />
-			<Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
-        <View style={styles.Buffer3} />
-        <FormInput
-          onChangeText={(value) => {
-            props.handleChange(value)
-          }}
-          defaultValue={props.searchTopic}
-          containerStyle={styles.FormContainer}
-          inputStyle={styles.FormInput}
-          keyboardAppearance="dark"
-          placeholder="enter search term"
-          placeholderTextColor= "#600000"
-        />
-        <View style={styles.Buffer1} />
-        <View style={styles.Buffer3} >
-          <Button
-            raised
-            icon={{name: 'space-shuttle', size: 50, color: '#600000', type: 'font-awesome'}}
-            buttonStyle={{backgroundColor: '#191919', borderRadius: 10}}
-            textStyle={styles.Text}
-            title={`Search`}
-            onPress={() => {
-              props.handleSearch(props.searchTopic)
-              props.navigation.navigate('SearchResults')
-            }
+      <StatusBar barStyle="dark-content" />
+      <View style={styles.Buffer3} />
+      <FormInput
+        onChangeText={(value) => {
+          props.handleChange(value)
+        }}
+        defaultValue={props.searchTopic}
+        containerStyle={styles.FormContainer}
+        inputStyle={styles.FormInput}
+        keyboardAppearance="light"
+        placeholder="enter search term"
+        placeholderTextColor= "green"
+      />
+      <View style={styles.Buffer1} />
+      <View style={styles.Buffer3} >
+        <Button
+          icon={{name: 'search', size: 50, color: 'black', type: 'font-awesome'}}
+          buttonStyle={{backgroundColor: 'lightgreen', borderRadius: 10}}
+          textStyle={styles.Text}
+          title={`Search`}
+          onPress={() => {
+            props.handleSearch(props.searchTopic)
+            props.navigation.navigate('SearchResults')
           }
-          />
-        </View>
-        <View style={styles.Buffer3} />
-			</Image>
+        }
+        />
+      </View>
+      <View style={styles.Buffer3} />	
 		</KeyboardAvoidingView>
 	)
 }

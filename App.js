@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { Tabs } from './components/Tabs'
+import HomeStack from './components/HomeStack'
 import Loading from './components/Loading'
 import store from './store'
 import Expo from 'expo'
@@ -24,7 +24,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        {this.state.fontLoaded ? (<Tabs />) : (<Loading />)}
+        {this.state.fontLoaded ? (<HomeStack />) : (<Loading />)}
       </Provider>
     );
   }

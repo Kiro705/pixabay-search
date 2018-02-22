@@ -4,18 +4,16 @@ import thunkMiddleware from 'redux-thunk'
 import searchResults from './searchResults'
 import searchTopic from './searchTopic'
 import singleResult from './singleResult'
-import catalogItem from './catalogItem'
 
 const reducer = combineReducers({
 	searchResults,
 	searchTopic,
 	singleResult,
-	catalogItem
 })
 
 let store
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'developmentxx') {
 	const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 	store = createStore(reducer, middleware)
 } else {
@@ -27,4 +25,3 @@ export default store
 export * from './searchResults'
 export * from './searchTopic'
 export * from './singleResult'
-export * from './catalogItem'

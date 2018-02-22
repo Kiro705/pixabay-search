@@ -9,7 +9,11 @@ const  {height, width} = Dimensions.get('window')
 const styles = StyleSheet.create({
 	Container: {
 		flex: 1,
-		backgroundColor: 'black',
+    backgroundColor: 'green',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
   },
   Image: {
     height: height * 0.5,
@@ -17,26 +21,11 @@ const styles = StyleSheet.create({
     width: width - 20,
     margin: 10,
   },
-  Title: {
-    fontSize: 36,
-    fontFamily: 'Courier New',
-    textAlign: 'center',
-    color: '#600000',
-    margin: 10,
-  },
-  Description: {
-    fontSize: 20,
-    fontFamily: 'Courier New',
-    fontStyle: 'italic',
-    textAlign: 'left',
-    color: '#600000',
-    margin: 10,
-  },
   Value: {
-    fontSize: 28,
-    fontFamily: 'Courier New',
+    fontSize: 24,
+    fontFamily: 'Arial',
     textAlign: 'left',
-    color: '#600000',
+    color: 'white',
     margin: 10,
   },
   Buffer1: {
@@ -54,25 +43,13 @@ const mapState = (state) => {
 }
 
 function SingleResultComponent(props){
-  let tagString = 'none'
-  if (props.singleResult.tags){
-    tagString = (props.singleResult.tags.reduce((accumulator, value) => {
-      return accumulator + value + ', '
-    }, ''))
-  }
-  tagString = tagString.slice(0, tagString.length - 2)
 	return (
 		<View style={styles.Container}>
       <ScrollView>
-        <StatusBar barStyle="light-content" />
-        <Text style={styles.Title}> {props.singleResult.title}</Text>
-        <Divider style={{ backgroundColor: '#191919' }} />
-        <Text style={styles.Description}>{props.singleResult.description}</Text>
-        <Divider style={{ backgroundColor: '#191919' }} />
-        <Text style={styles.Value}>NASA id: {props.singleResult.id}</Text>
-        <Text style={styles.Value}>Date: {props.singleResult.date}</Text>
-        <Text style={styles.Value}>Center: {props.singleResult.center}</Text>
-        <Text style={styles.Value}>Tags: {tagString}</Text>
+        <StatusBar barStyle="dark-content" />
+        <Text style={styles.Value}>User: {props.singleResult.user}</Text>
+        <Text style={styles.Value}>Tags: {props.singleResult.tags}</Text>
+        <Text style={styles.Value}>Resolution: {props.singleResult.resolution}</Text>
         <Divider style={{ backgroundColor: '#191919' }} />
         <Image style={styles.Image} source={{uri: props.singleResult.image}} />
       </ScrollView>

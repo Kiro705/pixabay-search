@@ -1,6 +1,4 @@
-# Pocket Astronomer
-#### Space image search and library in your pocket!
+# Pixabay Search
+#### Over 1300000 high quality images, now on your phone! 
 
-Designed to provide a quick and light-weight way to search NASA's image API from your phone. Built in expo and using the react-native framework. 
-
-Learn all about space from the comfort of your phone!
+Built to search Pixabay's image database using React-Native and Redux for state management.

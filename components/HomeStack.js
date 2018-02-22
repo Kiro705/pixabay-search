@@ -10,24 +10,24 @@ const HomeStack = StackNavigator({
 	Home: {
     screen: Home,
     navigationOptions: ({navigation}) => ({
-      title: `Pocket Astronomer`,
+      title: `Pixabay Search`,
       headerBackTitle: 'Home',
       headerBackTitleStyle: {
-        color: '#600000',
-        fontFamily: 'Courier New',
+        color: 'green',
+        fontFamily: 'Arial',
         fontSize: 24,
         fontWeight: 'normal'
       },
       headerStyle: {
-        backgroundColor: '#191919',
+        backgroundColor: 'white',
       },
       headerTitleStyle: {
-        color: '#600000',
-        fontFamily: 'Courier New',
+        color: 'green',
+        fontFamily: 'Arial',
         fontSize: width * 0.08,
         fontWeight: 'normal'
       },
-      headerTintColor: '#600000'
+      headerTintColor: 'green'
     }),
   },
   SearchResults: {
@@ -40,21 +40,21 @@ const HomeStack = StackNavigator({
       return ({
       title: navigation.state.params.title || ' ',
       headerStyle: {
-        backgroundColor: '#191919',
+        backgroundColor: 'white',
       },
       headerTitleStyle: {
-        color: '#600000',
-        fontFamily: 'Courier New',
+        color: 'green',
+        fontFamily: 'Arial',
         fontSize: width * 0.075,
         fontWeight: 'normal'
       },
       headerBackTitleStyle: {
-        color: '#600000',
-        fontFamily: 'Courier New',
+        color: 'green',
+        fontFamily: 'Arial',
         fontSize: width * 0.06,
         fontWeight: 'normal'
       },
-      headerTintColor: '#600000'
+      headerTintColor: 'green'
     })},
   },
     SingleResult: {
@@ -67,21 +67,21 @@ const HomeStack = StackNavigator({
         return ({
         title: navigation.state.params.title || ' ',
         headerStyle: {
-          backgroundColor: '#191919',
+          backgroundColor: 'white',
         },
         headerTitleStyle: {
-          color: '#600000',
-          fontFamily: 'Courier New',
+          color: 'green',
+          fontFamily: 'Arial',
           fontSize: width * 0.08,
           fontWeight: 'normal'
         },
         headerBackTitleStyle: {
-          color: '#600000',
-          fontFamily: 'Courier New',
+          color: 'green',
+          fontFamily: 'Arial',
           fontSize: width * 0.06,
           fontWeight: 'normal'
         },
-        headerTintColor: '#600000'
+        headerTintColor: 'green'
       })},
     }
   }, {
