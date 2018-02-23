@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native'
 import { List, ListItem } from 'react-native-elements'
 import Loading from './Loading'
 import ResultItem from './ResultItem'
+import { getNextResults } from '../store'
 
 const styles = StyleSheet.create({
 	Container: {
@@ -36,6 +37,14 @@ const mapState = (state) => {
   }
 }
 
+const mapDispatch = (dispatch) => {
+  return {
+    handleLoadMore: (string, page) => {
+      dispatch(getNextResults(string, page))
+    }
+  }
+}
+
 class SearchResultsComponent extends React.Component {
 
   componentDidUpdate(prevProps){
@@ -48,9 +57,6 @@ class SearchResultsComponent extends React.Component {
     let searchResults = this.props.searchResults
     if (searchResults.hits[0] !== null){
       if (searchResults.hits.length){
-        console.log('Total Hits:', searchResults.totalHits)
-        console.log('Hits.length:', searchResults.hits.length)
-        console.log('Total:', searchResults.total)
         return (
           <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
             <FlatList
@@ -58,19 +64,19 @@ class SearchResultsComponent extends React.Component {
               renderItem={(image) => {
                 return (
                   <ListItem
-                    style={{margin: 0, padding: 0}}
                     title={
-                      <View style={{margin: 0, padding: 0}}>
+                      <View>
                         <ResultItem data={image.item} navigator={this.props.navigation.navigate} />
                       </View>
                     }
-                    containerStyle={{ margin: 0, padding: 0, borderBottomWidth: 6, backgroundColor: 'green' }}
+                    containerStyle={{ borderBottomWidth: 2, backgroundColor: 'green' }}
                   />
                 )}
               }
               keyExtractor={image => image.id}
+              onEndReached={() => {this.props.handleLoadMore(searchResults.topic, searchResults.page)}}
+              onEndThreshold={10}
             />
-            {/*<ResultItem data={image.item} navigator={this.props.navigation.navigate} />*/}
           </List>
         )
       } else {
@@ -94,5 +100,5 @@ class SearchResultsComponent extends React.Component {
   }
 }
 
-export default connect(mapState)(SearchResultsComponent)
+export default connect(mapState, mapDispatch)(SearchResultsComponent)
 

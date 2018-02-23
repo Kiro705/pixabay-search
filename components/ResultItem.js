@@ -8,12 +8,9 @@ const  {height, width} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   Image: {
-    position: 'relative',
-    right: 10,
     height: height * 0.45,
     resizeMode: 'contain',
     width: width - 20,
-    margin: 10,
     backgroundColor: 'rgba(0,0,0,0)',
   },
 })
