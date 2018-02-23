@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { List, ListItem } from 'react-native-elements'
 import Loading from './Loading'
 import ResultItem from './ResultItem'
 
@@ -44,27 +45,40 @@ class SearchResultsComponent extends React.Component {
   }
 
   render() {
-    if (this.props.searchResults.hits[0] !== null){
-      if (this.props.searchResults.hits.length){
+    let searchResults = this.props.searchResults
+    if (searchResults.hits[0] !== null){
+      if (searchResults.hits.length){
+        console.log('Total Hits:', searchResults.totalHits)
+        console.log('Hits.length:', searchResults.hits.length)
+        console.log('Total:', searchResults.total)
         return (
-          <View style={styles.Container}>
-            <View style={styles.Buffer1} >
-              <ScrollView>
-                {
-                  this.props.searchResults.hits.map((image) => {
-                    return (<ResultItem key={image.id} data={image} navigator={this.props.navigation.navigate} />)
-                  })
-                }
-              </ScrollView>
-            </View>
-          </View>
+          <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+            <FlatList
+              data={searchResults.hits}
+              renderItem={(image) => {
+                return (
+                  <ListItem
+                    style={{margin: 0, padding: 0}}
+                    title={
+                      <View style={{margin: 0, padding: 0}}>
+                        <ResultItem data={image.item} navigator={this.props.navigation.navigate} />
+                      </View>
+                    }
+                    containerStyle={{ margin: 0, padding: 0, borderBottomWidth: 6, backgroundColor: 'green' }}
+                  />
+                )}
+              }
+              keyExtractor={image => image.id}
+            />
+            {/*<ResultItem data={image.item} navigator={this.props.navigation.navigate} />*/}
+          </List>
         )
       } else {
         return (
           <View style={styles.Container}>
             <View style={styles.Buffer3} />
             <View style={styles.Buffer1}>
-              <Text style={styles.Text}>Nothing matching '{this.props.searchResults.topic}' was found</Text>
+              <Text style={styles.Text}>Nothing matching '{searchResults.topic}' was found</Text>
             </View>
             <View style={styles.Buffer3} />
           </View>

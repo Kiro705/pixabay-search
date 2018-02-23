@@ -5,9 +5,6 @@
     "sdkVersion": "22.0.0",
     "version": "0.1.2",
     "privacy": "public",
-    //Available in expo 24.0.0, but that version is causeing bugs.
-    // "platforms": ["ios"],
-    // "githubUrl": "https://github.com/Kiro705/pocket_astronomer",
     "orientation": "default",
     "icon": "./assets/logo.png",
     "description": "A way to search Pixabay from you phone."

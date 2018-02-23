@@ -13,13 +13,14 @@ const searchResultsObj = {
 	//Results have ability to chain searches with next page item
 	total: 0,
 	totalHits: 0,
+	page: 0,
 }
 
 /**
  * ACTION CREATORS
  */
 const getSearchResultsAction = (searchResults, searchString) => ({type: GET_SEARCH_RESULTS, searchResults, searchString})
-export const resetSearchResults = () => ({type: RESET_SEARCH_RESULTS, searchResults: {topic: '', hits: [null], total: 0, totalHits: 0}})
+export const resetSearchResults = () => ({type: RESET_SEARCH_RESULTS, searchResults: {topic: '', hits: [null], total: 0, totalHits: 0, page: 0}})
 
 /**
  * THUNK CREATORS
@@ -40,7 +41,7 @@ export const getSearchResults = (searchString) =>
 export default function (state = searchResultsObj, action) {
 	switch (action.type) {
 	case GET_SEARCH_RESULTS:
-		return Object.assign({}, state, {topic: action.searchString, hits: action.searchResults.hits, total: action.searchResults.total, totalHits: action.searchResults.totalHits})
+		return Object.assign({}, state, {topic: action.searchString, hits: action.searchResults.hits, total: action.searchResults.total, totalHits: action.searchResults.totalHits, page: 1})
 	case RESET_SEARCH_RESULTS:
 		return Object.assign({}, state, action.searchResults)
 	default:

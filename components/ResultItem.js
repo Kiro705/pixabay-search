@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { StyleSheet, View, Image, Text, TouchableHighlight } from 'react-native'
+import { StyleSheet, View, Image, TouchableHighlight } from 'react-native'
 import { setSingleResult, resetSingleResult } from '../store'
 
 const Dimensions = require('Dimensions')
@@ -8,6 +8,8 @@ const  {height, width} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   Image: {
+    position: 'relative',
+    right: 10,
     height: height * 0.45,
     resizeMode: 'contain',
     width: width - 20,
