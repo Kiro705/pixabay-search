@@ -7,6 +7,6 @@
     "privacy": "public",
     "orientation": "default",
     "icon": "./assets/logo.png",
-    "description": "A way to search Pixabay from you phone."
+    "description": "A way to search Pixabay from your phone."
   }
 }
