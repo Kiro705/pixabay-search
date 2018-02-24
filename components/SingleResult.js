@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   Image: {
-    height: height * 0.5,
+    height: height * 0.7,
     resizeMode: 'contain',
     width: width - 20,
     margin: 10,
@@ -51,7 +51,8 @@ function SingleResultComponent(props){
         <Text style={styles.Value}>Tags: {props.singleResult.tags}</Text>
         <Text style={styles.Value}>Resolution: {props.singleResult.resolution}</Text>
         <Divider style={{ backgroundColor: '#191919' }} />
-        <Image style={styles.Image} source={{uri: props.singleResult.image}} />
+        //Loads higher quality image at 960px width
+        <Image style={styles.Image} source={{uri: props.singleResult.image.slice(0,props.singleResult.image.length - 8) + '_960.jpg'}} />
       </ScrollView>
 		</View>
 	)
