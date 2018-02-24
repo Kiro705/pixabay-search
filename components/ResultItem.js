@@ -35,7 +35,7 @@ function ResultItemComponent (props){
   const dataObj = {
     user: data.user,
     tags: data.tags,
-    resolution: data.webformatWidth + ' x ' + data.webformatHeight,
+    resolution: data.imageWidth + 'x' + data.imageHeight,
     image: data.webformatURL,
   }
   return (
@@ -49,7 +49,7 @@ function ResultItemComponent (props){
         <Image
           style={styles.Image}
           //Loads lower quality image at 340 px width
-          source={{uri: data.webformatURL.slice(0 ,data.webformatURL.length - 8) + '_340.jpg'}}
+          source={{uri: data.webformatURL.slice(0, data.webformatURL.length - 8) + '_340.jpg'}}
         />
       </TouchableHighlight>
     </View>
